@@ -48,6 +48,28 @@ class Linked_list:
         self.insert_any(data, self.length() - 1)
 
 
+    def delete_beg(self):
+        self.head = self.head.next
+
+    def delete_any(self, index):
+        if index < 0 or index >= self.length():
+            print("Index Error!")
+        elif index == 0:
+            self.delete_beg()
+        else:
+            ptr = self.head
+            i = 0
+            while i < index-1:
+                ptr = ptr.next
+                i += 1
+
+            ptr.next = ptr.next.next
+
+    def delete_end(self):
+        self.delete_any(self.length() - 1)
+
+     
+
 
 
     
@@ -59,5 +81,7 @@ if __name__ == '__main__':
     a.insert_beg(10)
     a.insert_any(15, 0)
     a.insert_end(40)
+    a.delete_any(3)
+    # a.delete_beg()
     a.print()
     
