@@ -47,6 +47,13 @@ class Linked_list:
     def insert_end(self, data):
         self.insert_any(data, self.length() - 1)
 
+    def insert_by_val(self, data, value):
+        new_node = Node(data)
+        ptr = self.head
+        while ptr.data != value:
+            ptr = ptr.next
+        new_node.next = ptr.next
+        ptr.next = new_node
 
     def delete_beg(self):
         self.head = self.head.next
@@ -68,12 +75,11 @@ class Linked_list:
     def delete_end(self):
         self.delete_any(self.length() - 1)
 
-     
-
-
-
-    
-
+    def delete_by_value(self, value):
+        ptr = self.head
+        while ptr.next.data != value:
+            ptr = ptr.next
+        ptr.next = ptr.next.next
 
 if __name__ == '__main__':
     a = Linked_list()
@@ -81,7 +87,13 @@ if __name__ == '__main__':
     a.insert_beg(10)
     a.insert_any(15, 0)
     a.insert_end(40)
-    a.delete_any(3)
+    # a.delete_any(3)
     # a.delete_beg()
+    a.print()
+    print()
+    a.insert_by_val(50, 5)
+    a.print()
+    print()
+    a.delete_by_value(40)
     a.print()
     
