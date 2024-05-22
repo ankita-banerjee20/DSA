@@ -3,7 +3,7 @@ class Node:
         self.data = data
         self.next = next
 
-class Linked_list:
+class LinkedList:
     def __init__(self):
         self.head = None
 
@@ -30,14 +30,14 @@ class Linked_list:
             self.head = start_node
 
     def insert_any(self, data, index):
-        if index < 0 or index >= self.length():
+        if index < 0 or index > self.length():
             print("Index Error!")
         elif index == 0:
             self.insert_beg(data)
         else:
             ptr = self.head
             i = 0
-            while i < index:
+            while i < index - 1:
                 i += 1
                 ptr = ptr.next
             new_node = Node(data)
@@ -45,7 +45,7 @@ class Linked_list:
             ptr.next = new_node
 
     def insert_end(self, data):
-        self.insert_any(data, self.length() - 1)
+        self.insert_any(data, self.length())
 
     def insert_by_val(self, data, value):
         new_node = Node(data)
@@ -56,7 +56,10 @@ class Linked_list:
         ptr.next = new_node
 
     def delete_beg(self):
-        self.head = self.head.next
+        if self.head == None:
+            print('Empty Linked List')
+        else:
+            self.head = self.head.next
 
     def delete_any(self, index):
         if index < 0 or index >= self.length():
@@ -82,7 +85,7 @@ class Linked_list:
         ptr.next = ptr.next.next
 
 if __name__ == '__main__':
-    a = Linked_list()
+    a = LinkedList()
     a.insert_beg(5)
     a.insert_beg(10)
     a.insert_any(15, 0)
