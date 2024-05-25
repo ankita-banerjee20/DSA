@@ -6,6 +6,7 @@ class QueueElement():
 class Queue():
     def __init__(self):
         self.head = None
+        self.tail = self.head
 
     def print(self):
         ptr = self.head
@@ -18,10 +19,12 @@ class Queue():
         if self.head is None:
             self.head = ele
         else:
-            ptr = self.head
-            while ptr.next != None:
-                ptr = ptr.next
-            ptr.next = ele
+            self.tail.next = ele
+        self.tail = ele
+            # ptr = self.head
+            # while ptr.next != None:
+            #     ptr = ptr.next
+            # ptr.next = ele
 
     def dequeue(self):
         if self.head is None:
@@ -36,6 +39,11 @@ if __name__ == '__main__':
     a.enqueue(10)
     a.enqueue(15)
     a.enqueue(20)
-    a.dequeue()
+    a.print()
+    print()
     a.dequeue()
     a.print()
+    print()
+    a.dequeue()
+    a.print()
+    print()
