@@ -25,7 +25,9 @@ class Stack():
         if self.head is None:
             print('Stack is empty')
         else:
+            pop_ele = self.head.data
             self.head = self.head.next
+            return pop_ele
 
     def peek(self):
         print('Last element: ', self.head.data)
@@ -34,7 +36,9 @@ if __name__ == '__main__':
     a = Stack()
     a.push(5)
     a.push(10)
-    a.pop()
+    a.print()
+    print()
+    print(a.pop())
     a.print()
     print()
     a.peek()
