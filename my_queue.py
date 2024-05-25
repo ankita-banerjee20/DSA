@@ -30,7 +30,9 @@ class Queue():
         if self.head is None:
             print('Empty queue!')
         else:
+            dequeue_ele = self.head.data
             self.head = self.head.next
+            return dequeue_ele
 
 
 if __name__ == '__main__':
@@ -41,9 +43,9 @@ if __name__ == '__main__':
     a.enqueue(20)
     a.print()
     print()
-    a.dequeue()
+    print(a.dequeue())
     a.print()
     print()
-    a.dequeue()
+    print(a.dequeue())
     a.print()
     print()
