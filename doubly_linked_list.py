@@ -54,27 +54,12 @@ class DoublyLinkedList:
         self.insert_any(data, self.length())
 
     def remove_beg(self):
-        self.head = self.head.next
-        self.head.prev = None
-
-    def remove_any(self, index):
-        if index < 0 or index > self.length():
-            print('Index Error!')
-        elif index == 0:
-            self.remove_beg()
+        if self.head is None:
+            print("List does not exist!")
         else:
-            ptr = self.head
-            count = 0
-            while count < index - 1:
-                count += 1
-                ptr = ptr.next
-            if ptr.next.next ==  None:
-                ptr.next = None
-            else:
-                ptr.next = ptr.next.next
-                ptr.next.prev = ptr
-            
-            
+            self.head = self.head.next
+            self.head.prev = None
+
     def remove_end(self):
         ptr = self.head
         count = 0
@@ -83,15 +68,34 @@ class DoublyLinkedList:
             ptr = ptr.next
         ptr.next = None
 
+    def remove_any(self, index):
+        if index < 0 or index > self.length():
+            print('Index Error!')
+        elif index == 0:
+            self.remove_beg()
+        elif index == self.length() - 1:
+            self.remove_end()
+        else:
+            ptr = self.head
+            count = 0
+            while count < index - 1:
+                count += 1
+                ptr = ptr.next
+            ptr.next = ptr.next.next
+            ptr.next.prev = ptr
+            
+            
+
+
 if __name__ == '__main__':
     a = DoublyLinkedList()
     a.insert_beg(5)
     a.insert_beg(10)
     a.insert_any(15, 1)
     a.insert_end(40)
-    a.remove_beg()
-    # a.remove_any(3)
-    a.remove_end()
+    # a.remove_beg()
+    a.remove_any(3)
+    # a.remove_end()
     a.print()
 
 
